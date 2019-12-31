@@ -1,6 +1,7 @@
 # non-B-gfa
 gfa programs for Non-B site at NCI/FNLCR
-Suite of programs developed at NCI-Frederick/Frederick National Lab to find sequences associated with non-B DNA forming motifs
+
+gfa is a Suite of programs developed at NCI-Frederick/Frederick National Lab to find sequences associated with non-B DNA forming motifs
 
 DNA exists in many possible conformations that include the A-DNA, B-DNA, and Z-DNA forms; of these, B-DNA is the most common form found in cells. The DNAs that do not fall into a right-handed Watson-Crick double-helix are known as non-B DNAs and comprise cruciform, triplex, slipped (hairpin) structures, tetraplex (G-quadruplex), left-handed Z-DNA, and others. Several recent publications have provided significant evidence that non-B DNA structures may play a role in DNA instability and mutagenesis, leading to both DNA rearrangements and increased mutational rates, which are hallmark of cancer.
 

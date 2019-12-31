@@ -1,5 +1,6 @@
 PGMNAME = gfa
-CC = icc
+#CC = icc
+CC = gcc -lm
 OBJ = $(PGMNAME).o \
 cdna.o     findIR.o    nulls.o           process_repeats.o \
 findAPR.o  findMR.o    print_gff_file.o  rcdna.o \

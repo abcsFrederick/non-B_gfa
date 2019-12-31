@@ -4,11 +4,15 @@ Suite of programs developed at NCI-Frederick/Frederick National Lab to find sequ
 
 DNA exists in many possible conformations that include the A-DNA, B-DNA, and Z-DNA forms; of these, B-DNA is the most common form found in cells. The DNAs that do not fall into a right-handed Watson-Crick double-helix are known as non-B DNAs and comprise cruciform, triplex, slipped (hairpin) structures, tetraplex (G-quadruplex), left-handed Z-DNA, and others. Several recent publications have provided significant evidence that non-B DNA structures may play a role in DNA instability and mutagenesis, leading to both DNA rearrangements and increased mutational rates, which are hallmark of cancer.
 
-Website for submitting sequences: https://nonb-abcc.ncifcrf.gov/apps/site/default
+**Website for submitting sequences: https://nonb-abcc.ncifcrf.gov/apps/site/default**
+
+The results from the website are based on the default values of gfa and should match the example output (included in the tar file) when the example (below) is run as shown. 
+
 
 Please cite: Non-B DB v2.0: a database of predicted non-B DNA-forming motifs and its associated tools.
 Regina Z. Cer, Duncan E. Donohue, Uma S. Mudunuri, Nuri A. Temiz, Michael A. Loss, Nathan J. Starner, Goran N. Halusa, Natalia Volfovsky, Ming Yi, Brian T. Luke, Albino Bacolla, Jack R. Collins and Robert M. Stephens.
 Nucl. Acids Res. (2013) 41 (D1): D94-D100. doi: 10.1093/nar/gks955
+
 ```
 ************************  GFA2    ********************************************
 

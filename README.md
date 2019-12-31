@@ -2,8 +2,6 @@
 gfa programs for Non-B site at NCI/FNLCR
 Suite of programs developed at NCI-Frederick/Frederick National Lab to find sequences associated with non-B DNA forming motifs
 
-non-B DB
-
 DNA exists in many possible conformations that include the A-DNA, B-DNA, and Z-DNA forms; of these, B-DNA is the most common form found in cells. The DNAs that do not fall into a right-handed Watson-Crick double-helix are known as non-B DNAs and comprise cruciform, triplex, slipped (hairpin) structures, tetraplex (G-quadruplex), left-handed Z-DNA, and others. Several recent publications have provided significant evidence that non-B DNA structures may play a role in DNA instability and mutagenesis, leading to both DNA rearrangements and increased mutational rates, which are hallmark of cancer.
 
 Website for submitting sequences: https://nonb-abcc.ncifcrf.gov/apps/site/default
@@ -11,19 +9,18 @@ Website for submitting sequences: https://nonb-abcc.ncifcrf.gov/apps/site/defaul
 Please cite: Non-B DB v2.0: a database of predicted non-B DNA-forming motifs and its associated tools.
 Regina Z. Cer, Duncan E. Donohue, Uma S. Mudunuri, Nuri A. Temiz, Michael A. Loss, Nathan J. Starner, Goran N. Halusa, Natalia Volfovsky, Ming Yi, Brian T. Luke, Albino Bacolla, Jack R. Collins and Robert M. Stephens.
 Nucl. Acids Res. (2013) 41 (D1): D94-D100. doi: 10.1093/nar/gks955
-
+```
 ************************  GFA2    ********************************************
-*****************************************************************************
+
 usage:./gfa -seq <input_fasta_filename> -out <output_file_prefix> [optional_switches]
- 
+*****************************************************************************
  GFA2 takes in a DNA sequence in fasta format and returns Gene Feature Frormat
- (.gff) and Tab Separated Value (.tsv) files containing 
- the location and details of potential non-B DNA forming motifs. 
+ (.gff) and Tab Separated Value (.tsv) files containing the location and details of potential non-B DNA forming motifs. 
  
-Required Switches: 
+Required Switches:
 	-seq <string>; The filename for the input DNA fasta file.
 	-out <string>; The output filename prefix.
-		Motif abbreviations and file extension are automatically appended.
+	Motif abbreviations and file extension are automatically appended.
  
 Optional Integer Switches:  Each switch is followed by its default value.
 		All values refer to sequential nucleotides.
@@ -77,3 +74,4 @@ Other Optional Switches: (not followed by values)
 ********************************************************************
  Author: Duncan E. Donohue, Ph.D.
  Expansion of work by Jack R. Collins, Ph.D.
+```

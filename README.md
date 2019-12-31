@@ -48,7 +48,6 @@ Optional Integer Switches:  Each switch is followed by its default value.
 	-minSTR <1>; The minimum length of repeating element in short tandem repeats.
 	-maxSTR <9>; The maximum length of repeating element in short tandem repeats.
 	-minSTRbp <8>; The minimum overall length for qualification as a short tandem repeat.
- 
 	-minCruciformRep <6>; The minimum repeat length for IR to qualify as cruciform.
 	-maxCruciformSpacer <4>; The maximum spacer length for IR to qualify as cruciform.
 	-minTriplexYRpercent <10>; The minimum purine/pyramadine percent contend for MR to qualify as triplex.
@@ -72,7 +71,9 @@ Other Optional Switches: (not followed by values)
 	-doCHMOD; Run a system call to chomd command (664) on output files. 
 ********************************************************************
          EXAMPLE:
-./gfa -seq chr22.fa -out chr22 -chrom chr22 -maxDRrep 20 -minATracts 4 -skipGQ -skipZ 
+./gfa -skipWGET -seq gfa_test.fasta -out gfa_test
+	The input sequence file is gfa_test.fasta
+	There should be 14 output files (included in test_files.tar for comparison) using the default values
 ********************************************************************
  Author: Duncan E. Donohue, Ph.D.
  Expansion of work by Jack R. Collins, Ph.D.

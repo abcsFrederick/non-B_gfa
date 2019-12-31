@@ -18,7 +18,7 @@ Nucl. Acids Res. (2013) 41 (D1): D94-D100. doi: 10.1093/nar/gks955
 
 usage:./gfa -seq <input_fasta_filename> -out <output_file_prefix> [optional_switches]
 *****************************************************************************
- GFA2 takes in a DNA sequence in fasta format and returns Gene Feature Frormat
+ GFA2 takes in a DNA sequence in fasta format and returns Gene Feature Format
  (.gff) and Tab Separated Value (.tsv) files containing the location and details of potential non-B DNA forming motifs. 
  
 Required Switches:

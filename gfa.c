@@ -350,6 +350,26 @@ int main(int argc, char *argv[]) {
 				FATAL = TRUE;
 			}
 		}
+		if (strncmp(argv[i], "-shortIRcut", 11) == 0) {
+			if (argv[i + 1] != NULL) {
+				sscanf(argv[i + 1], "%d", &shortIRcut);
+				fprintf(stderr, "-shortIRcut value = %d\n", shortIRcut);
+			} else {
+				fprintf(stderr,
+						"FATAL ERROR: No argument for -shortIRcut switch\n");
+				FATAL = TRUE;
+			}
+		}
+		if (strncmp(argv[i], "-shortIRspacer", 14) == 0) {
+			if (argv[i + 1] != NULL) {
+				sscanf(argv[i + 1], "%d", &shortIRspacer);
+				fprintf(stderr, "-shortIRspacer value = %d\n", shortIRspacer);
+			} else {
+				fprintf(stderr,
+						"FATAL ERROR: No argument for -shortIRspacer switch\n");
+				FATAL = TRUE;
+			}
+		}
 		if (strncmp(argv[i], "-maxDRspacer", 12) == 0) {
 			if (argv[i + 1] != NULL) {
 				sscanf(argv[i + 1], "%d", &maxDRspacer);

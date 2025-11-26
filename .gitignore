@@ -1,0 +1,6 @@
+*.o
+*.fasta
+*.gff
+*.tsv
+gfa
+notify.php*

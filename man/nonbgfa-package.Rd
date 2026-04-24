@@ -6,13 +6,13 @@
 \alias{nonbgfa-package}
 \title{nonbgfa: Find Non-B DNA Forming Motifs in Genomic Sequences}
 \description{
-Identifies sequences associated with non-B DNA-forming motifs in FASTA-format genomic sequences. Detects seven motif classes: inverted repeats (cruciform DNA), mirror repeats (triplex DNA), direct repeats (slipped DNA), G-quadruplexes, Z-DNA, short tandem repeats (STR), and A-phased repeats (bent DNA). Based on the GFA suite developed at NCI-Frederick / Frederick National Laboratory for Biodefense and Counterterrorism. See \url{https://nonb-abcc.ncifcrf.gov/apps/site/default}.
+Identifies sequences associated with non-B DNA-forming motifs in FASTA-format genomic sequences. Detects seven motif classes: inverted repeats (cruciform DNA), mirror repeats (triplex DNA), direct repeats (slipped DNA), G-quadruplexes, Z-DNA, short tandem repeats (STR), and A-phased repeats (bent DNA). Based on the GFA suite developed at NCI-Frederick / Frederick National Laboratory for Cancer Research. See \url{https://nonb-abcc.ncifcrf.gov/apps/site/default}.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/NCATS-Tangerine/non-b-gfa}
-  \item Report bugs at \url{https://github.com/NCATS-Tangerine/non-b-gfa/issues}
+  \item \url{https://github.com/abcsFrederick/non-b-gfa}
+  \item Report bugs at \url{https://github.com/abcsFrederick/non-b-gfa/issues}
 }
 
 }
@@ -23,11 +23,6 @@ Authors:
 \itemize{
   \item Duncan E. Donohue (Original GFA C implementation)
   \item Jack R. Collins (Original GFA C implementation)
-}
-
-Other contributors:
-\itemize{
-  \item ABCS-Frederick [copyright holder]
 }
 
 }

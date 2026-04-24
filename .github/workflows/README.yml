@@ -1,6 +1,9 @@
 name: Render README
 
 on:
+  push:
+    branches:
+      - Rpkg
   pull_request:
     branches:
       - Rpkg

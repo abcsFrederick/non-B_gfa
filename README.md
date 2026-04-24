@@ -1,10 +1,8 @@
 
 
-# nonbgfa
-
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/BIFX547-26/non-b-gfa-johnsonra/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/BIFX547-26/non-b-gfa-johnsonra/actions/workflows/R-CMD-check.yml)
+[![R-CMD-check](https://github.com/johnsonra/non-B_gfa/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/johnsonra/non-B_gfa/actions/workflows/R-CMD-check.yml)
 <!-- badges: end -->
 
 **nonbgfa** is an R package for finding non-B DNA-forming motifs in

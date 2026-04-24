@@ -2,17 +2,24 @@
 format: gfm
 ---
 
-# nonbgfa
-
-<!-- badges: start -->
-[![R-CMD-check](https://github.com/BIFX547-26/non-b-gfa-johnsonra/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/BIFX547-26/non-b-gfa-johnsonra/actions/workflows/R-CMD-check.yml)
-<!-- badges: end -->
-
 ```{r setup}
 #| include: false
 library(knitr)
 library(GenomicRanges)
+library(gitr)
+library(stringr)
+
+remote_url <- git("remote get-url origin", echo_cmd = FALSE)$stdout |>
+    trimws()
+
+action_url <- str_replace(remote_url, fixed('.git'), '/actions/workflows/R-CMD-check.yml')
+badge_url <- paste0(action_url, '/badge.svg')
 ```
+
+<!-- badges: start -->
+[![R-CMD-check](`r badge_url`)](`r action_url`)
+<!-- badges: end -->
+
 
 **nonbgfa** is an R package for finding non-B DNA-forming motifs in genomic
 sequences.  It wraps the [GFA suite](https://nonb-abcc.ncifcrf.gov/apps/site/default)

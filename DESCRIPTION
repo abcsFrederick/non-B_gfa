@@ -27,10 +27,6 @@ Suggests:
     GenomicRanges,
     IRanges,
     BiocGenerics,
-    quarto,
     testthat (>= 3.0.0),
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr
 URL: https://github.com/abcsFrederick/non-b-gfa
 BugReports: https://github.com/abcsFrederick/non-b-gfa/issues

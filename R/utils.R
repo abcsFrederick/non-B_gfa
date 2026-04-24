@@ -36,7 +36,8 @@
   maxTriplexSpacer      = 8L,
   maxSlippedSpacer      = 0L
 )
-
+
+
 # NULL-coalescing operator used in finder functions
 `%||%` <- function(x, y) if (!is.null(x) && length(x) > 0L) x else y
 
@@ -62,9 +63,11 @@
 #' @return A named character vector.  Names are the first word of each `>`
 #'   header line; values are the concatenated sequence strings.
 #' @examples
-#' fa <- system.file("extdata", "gfa_test.fasta", package = "nonbgfa")
-#' seq <- read_fasta(fa)
-#' nchar(seq)
+#' \dontrun{
+#'   fa <- system.file("extdata", "gfa_test.fasta", package = "nonbgfa")
+#'   seq <- read_fasta(fa)
+#'   nchar(seq)
+#' }
 #' @export
 read_fasta <- function(path) {
   lines <- readLines(path)

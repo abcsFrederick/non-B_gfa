@@ -1,82 +1,182 @@
-# non-B-gfa
-gfa programs for Non-B site at NCI/FNLCR
-
-gfa is a Suite of programs developed at NCI-Frederick/Frederick National Lab to find sequences associated with non-B DNA forming motifs
-
-DNA exists in many possible conformations that include the A-DNA, B-DNA, and Z-DNA forms; of these, B-DNA is the most common form found in cells. The DNAs that do not fall into a right-handed Watson-Crick double-helix are known as non-B DNAs and comprise cruciform, triplex, slipped (hairpin) structures, tetraplex (G-quadruplex), left-handed Z-DNA, and others. Several recent publications have provided significant evidence that non-B DNA structures may play a role in DNA instability and mutagenesis, leading to both DNA rearrangements and increased mutational rates, which are hallmark of cancer.
-
-**Website for submitting sequences: https://nonb-abcc.ncifcrf.gov/apps/site/default**
-
-The results from the website are based on the default values of gfa and should match the example output (included in the tar file) when the example (below) is run as shown. 
 
 
-Please cite: Non-B DB v2.0: a database of predicted non-B DNA-forming motifs and its associated tools.
-Regina Z. Cer, Duncan E. Donohue, Uma S. Mudunuri, Nuri A. Temiz, Michael A. Loss, Nathan J. Starner, Goran N. Halusa, Natalia Volfovsky, Ming Yi, Brian T. Luke, Albino Bacolla, Jack R. Collins and Robert M. Stephens.
-Nucl. Acids Res. (2013) 41 (D1): D94-D100. doi: 10.1093/nar/gks955
+# nonbgfa
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/BIFX547-26/non-b-gfa-johnsonra/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/BIFX547-26/non-b-gfa-johnsonra/actions/workflows/R-CMD-check.yml)
+<!-- badges: end -->
+
+**nonbgfa** is an R package for finding non-B DNA-forming motifs in
+genomic sequences. It wraps the [GFA
+suite](https://nonb-abcc.ncifcrf.gov/apps/site/default) developed at
+NCI-Frederick / Frederick National Laboratory for Cancer Research,
+exposing the C algorithms via a `.Call()` interface so results are
+returned directly as R `data.frame` or `GenomicRanges` objects.
+
+Non-B DNA structures deviate from the canonical right-handed
+Watson–Crick double helix and are implicated in genomic instability, DNA
+recombination hotspots, and elevated mutation rates in cancer.
+
+## Motif types
+
+| Function      | Motif                | Structural form    |
+|---------------|----------------------|--------------------|
+| `find_ir()`   | Inverted repeats     | Cruciform DNA      |
+| `find_mr()`   | Mirror repeats       | Triplex (H-DNA)    |
+| `find_dr()`   | Direct repeats       | Slipped-strand DNA |
+| `find_gq()`   | G-quadruplexes       | G4 / tetraplex DNA |
+| `find_zdna()` | Z-DNA                | Left-handed helix  |
+| `find_str()`  | Short tandem repeats | Microsatellites    |
+| `find_apr()`  | A-phased repeats     | Bent DNA           |
+
+## Installation
+
+``` r
+# Install from GitHub
+# install.packages("remotes")
+remotes::install_github("abcsFrederick/non-b-gfa", ref = 'Rpkg')
 ```
-************************  GFA2    ********************************************
 
-usage:./gfa -seq <input_fasta_filename> -out <output_file_prefix> [optional_switches]
-*****************************************************************************
- GFA2 takes in a DNA sequence in fasta format and returns Gene Feature Format
- (.gff) and Tab Separated Value (.tsv) files containing the location and details of potential non-B DNA forming motifs. 
- 
-Required Switches:
-	-seq <string>; The filename for the input DNA fasta file.
-	-out <string>; The output filename prefix.
-	Motif abbreviations and file extension are automatically appended.
- 
-Optional Integer Switches:  Each switch is followed by its default value.
-		All values refer to sequential nucleotides.
-		Note: if an integer switch is given, its associated value is required.
-	-minGQrep <3>; The minimum number of consecutive G's to form a G run (no max).
-	-maxGQspacer <7>; The maximum allowed distance between G runs (min of 1).
-	-minMRrep <10>; The minimum length of half of a mirror repeat (no max).
-	-maxMRspacer <100>; The c mirror repeat halves (min = 0).
-	-minIRrep <6>; The minimum length of half of an inverted repeat (no max).
-	-maxIRspacer <100>; The maximum allowed distance between inverted repeat halves (min = 0).
-	-shortIRcut <9>; The maximum length of half of an inverted repeat for it to be considered "short".
-	-shortIRspacer <4>; The maximum allowed distance between short inverted repeat halves (min = 0).
-	-minDRrep <10>; The minimum length of half of a direct repeat.
-	-maxDRrep <300>; The maximum length of half of a direct repeat.
-	-maxDRspacer <100>; The maximum allowed distance between direct repeat halves (min = 0).
-	-minATracts <3>; The minimum number of consecutive A Tracts to form an A-Phased Repeat.
-	-minATractSep <10>; The minimum separation between A Tracts centers.
-	-maxATractSep <11>; The maximum separation between A Tracts centers.
-	-maxAPRlen <9>; The maximum number of consecutive As allowed in an A tract.
-	-minAPRlen <3>; The minimum number of consecutive As allowed in an A tract.
-	-minZlen <10>; The minimum length of Z-DNA alternating purine/pyramadine run (no max).
-	-minSTR <1>; The minimum length of repeating element in short tandem repeats.
-	-maxSTR <9>; The maximum length of repeating element in short tandem repeats.
-	-minSTRbp <8>; The minimum overall length for qualification as a short tandem repeat.
-	-minCruciformRep <6>; The minimum repeat length for IR to qualify as cruciform.
-	-maxCruciformSpacer <4>; The maximum spacer length for IR to qualify as cruciform.
-	-minTriplexYRpercent <10>; The minimum purine/pyramadine percent contend for MR to qualify as triplex.
-	-maxTriplexSpacer <8>; The maximum spacer length for MR to qualify as triplex.
-	-maxSlippedSpacer <0>; The maximum spacer length for DR to qualify as slipped.
- 
-Other Optional Switches: (not followed by values)
-	-chrom <string>; An identifier for the input sequence, "chr1" for example.
-	   If not given, the first word of the fasta title string is used
-	-skipAPR; Do not search for A-Phased Repeats (bent DNA). 
-	-skipSTR; Do not search for Short Tandem Repeats. 
-	-skipDR; Do not search for Direct Repeats (slipped DNA). 
-	-skipMR; Do not search for Mirror Repeats (triplex DNA). 
-	-skipIR; Do not search for Inverted Repeats (cruciform DNA). 
-	-skipGQ; Do not search for G-Quadruplexe motifs. 
-	-skipZ; Do not search for Z DNA motifs. 
-	-skipSlipped; Do not search for slipped subset of DRs. 
-	-skipCruciform; Do not search for cruciform subset of IRs. 
-	-skipTriplex; Do not search for triplex subset of MRs. 
-	-skipWGET; Do not make wget call to php scripts to signify completion. 
-	-doCHMOD; Run a system call to chomd command (664) on output files. 
-********************************************************************
-         EXAMPLE:
-./gfa -skipWGET -seq gfa_test.fasta -out gfa_test
-	The input sequence file is gfa_test.fasta
-	There should be 14 output files (included in test_files.tar for comparison) using the default values
-********************************************************************
- Author: Duncan E. Donohue, Ph.D.
- Expansion of work by Jack R. Collins, Ph.D.
+The package requires a C compiler (provided by
+[Rtools](https://cran.r-project.org/bin/windows/Rtools/) on Windows,
+Xcode command-line tools on macOS, or `build-essential` on Linux).
+
+## Quick start
+
+``` r
+library(nonbgfa)
+
+# Use the bundled example sequence
+fasta <- system.file("extdata", "gfa_test.fasta", package = "nonbgfa")
+
+# Run all seven finders at once
+results <- find_nonb(fasta)
+sapply(results, nrow)
+```
+
+     IR  MR  DR  GQ   Z STR APR 
+     14   5   4   7   4   7   1 
+
+``` r
+# Or call individual finders
+ir  <- find_ir(fasta)
+gq  <- find_gq(fasta)
+head(ir)
+```
+
+|        | seq_name | start |  end | strand | length | spacer | num_repeats | remainder | subset |
+|:-------|:---------|------:|-----:|:-------|-------:|-------:|------------:|----------:|:-------|
+| Test.1 | seq1     |    16 |   29 | \+     |      6 |      2 |           1 |        29 | TRUE   |
+| Test.2 | seq1     |   108 |  121 | \+     |      6 |      2 |           1 |       121 | TRUE   |
+| Test.3 | seq1     |   542 |  555 | \+     |      6 |      2 |           1 |       555 | TRUE   |
+| Test.4 | seq1     |   813 |  826 | \+     |      6 |      2 |           1 |       826 | TRUE   |
+| Test.5 | seq1     |  2251 | 2267 | \+     |      7 |      3 |           1 |      2267 | TRUE   |
+| Test.6 | seq1     |  2370 | 2391 | \+     |     10 |      2 |           1 |      2391 | TRUE   |
+
+## Output columns
+
+Every finder returns a `data.frame` with these columns:
+
+| Column | Description |
+|----|----|
+| `seq_name` | Sequence identifier from the FASTA `>` header |
+| `start` | Start position (1-based, inclusive) |
+| `end` | End position (1-based, inclusive) |
+| `strand` | `"+"` (sense) or `"-"` (antisense) |
+| `length` | Repeat-unit length (bp); G-run size for GQ |
+| `spacer` | Spacer between repeat halves; KV score for Z-DNA |
+| `num_repeats` | Number of times the unit repeats; permutations for MR |
+| `remainder` | Partial repeat (DR); min-loop boundary (IR/MR); island count (GQ) |
+| `subset` | `TRUE` if locus qualifies as cruciform/triplex/slipped/high-KV |
+
+Pass `format = "GRanges"` to any finder for a
+[`GenomicRanges::GRanges`](https://bioconductor.org/packages/GenomicRanges)
+object (requires the **GenomicRanges** Bioconductor package).
+
+``` r
+find_ir(fasta, format = 'GRanges') |>
+    head()
+```
+
+    GRanges object with 6 ranges and 5 metadata columns:
+          seqnames    ranges strand |    length    spacer num_repeats remainder
+             <Rle> <IRanges>  <Rle> | <integer> <integer>   <integer> <integer>
+      [1]     seq1     16-29      + |         6         2           1        29
+      [2]     seq1   108-121      + |         6         2           1       121
+      [3]     seq1   542-555      + |         6         2           1       555
+      [4]     seq1   813-826      + |         6         2           1       826
+      [5]     seq1 2251-2267      + |         7         3           1      2267
+      [6]     seq1 2370-2391      + |        10         2           1      2391
+             subset
+          <logical>
+      [1]      TRUE
+      [2]      TRUE
+      [3]      TRUE
+      [4]      TRUE
+      [5]      TRUE
+      [6]      TRUE
+      -------
+      seqinfo: 1 sequence from an unspecified genome; no seqlengths
+
+## Parameter defaults
+
+All parameters match the original `gfa` CLI defaults and the Non-B DB
+website.
+
+| Motif | Parameter | Default | Meaning |
+|----|----|----|----|
+| IR | `minIRrep` | 6 | Min arm length (bp) |
+| IR | `maxIRspacer` | 100 | Max spacer (bp) |
+| IR | `shortIRcut` | 9 | Arms ≤ this length require tight spacer |
+| IR | `shortIRspacer` | 4 | Spacer limit for short IRs |
+| MR | `minMRrep` | 10 | Min half-length (bp) |
+| MR | `maxMRspacer` | 100 | Max spacer (bp) |
+| DR | `minDRrep` / `maxDRrep` | 10 / 300 | Repeat unit size range (bp) |
+| DR | `maxDRspacer` | 10 | Max spacer (bp) |
+| GQ | `minGQrep` | 3 | Min consecutive G’s per run |
+| GQ | `maxGQspacer` | 7 | Max spacer between G-runs (bp) |
+| Z-DNA | `minZlen` | 10 | Min alternating pur/pyr run (bp) |
+| STR | `minSTR` / `maxSTR` | 1 / 9 | Repeat unit size range (bp) |
+| STR | `minSTRbp` | 10 | Min total locus length (bp) |
+| APR | `minAPRlen` / `maxAPRlen` | 3 / 9 | A-tract length range (bp) |
+| APR | `minATracts` | 3 | Min A-tracts per repeat |
+
+See `?find_nonb` and individual function help pages for the full
+parameter list.
+
+## Multi-sequence input
+
+Functions will accept either a single named character vector or a
+multi-sequence FASTA file:
+
+``` r
+# input from fasta file
+fasta_ir <- read_fasta(fasta) |>
+    find_ir()
+
+# Inline sequences
+inline <- c(my_gene = "atcgatcgatcgatcgatcg") |>
+    find_ir()
+```
+
+## Citation
+
+Please cite the original GFA tool:
+
+> Cer RZ, Donohue DE, Mudunuri US, Temiz NA, Loss MA, Starner NJ, Halusa
+> GN, Volfovsky N, Yi M, Luke BT, Bacolla A, Collins JR, Stephens RM.
+> (2013) Non-B DB v2.0: a database of predicted non-B DNA-forming motifs
+> and its associated tools. *Nucleic Acids Research*, 41(D1):D94–D100.
+> <https://doi.org/10.1093/nar/gks955>
+
+## Original C tool
+
+The original `gfa` command-line tool source and Makefile are preserved
+in `inst/legacy/` for reference. To build the standalone binary:
+
+``` sh
+cd inst/legacy
+make
+./gfa -skipWGET -seq ../../inst/extdata/gfa_test.fasta -out gfa_test
 ```

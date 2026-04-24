@@ -1,0 +1,5 @@
+^plan\.md$
+^test_files\.tar$
+^\.github$
+^vignettes/introduction\.qmd$
+^vignettes/\.quarto$

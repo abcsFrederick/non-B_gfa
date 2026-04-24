@@ -43,8 +43,8 @@ jobs:
             any::knitr
             any::stringr
             any::gitr
-            local::.     # Forces the installation of nonbgfa
-          needs: website # Ensures it installs the package itself
+            local::.
+          needs: website
 
       - name: Render README
         run: quarto render README.qmd

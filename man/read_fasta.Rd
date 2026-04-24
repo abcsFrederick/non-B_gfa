@@ -17,7 +17,9 @@ header line; values are the concatenated sequence strings.
 Parses a FASTA file (single or multi-sequence) into a named character vector.
 }
 \examples{
-fa <- system.file("extdata", "gfa_test.fasta", package = "nonbgfa")
-seq <- read_fasta(fa)
-nchar(seq)
+\dontrun{
+  fa <- system.file("extdata", "gfa_test.fasta", package = "nonbgfa")
+  seq <- read_fasta(fa)
+  nchar(seq)
+}
 }

@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/johnsonra/non-B_gfa/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/johnsonra/non-B_gfa/actions/workflows/R-CMD-check.yml)
+[![R-CMD-check](https://github.com/abcsFrederick/non-B_gfa/badge.svg)](https://github.com/abcsFrederick/non-B_gfa)
 <!-- badges: end -->
 
 **nonbgfa** is an R package for finding non-B DNA-forming motifs in
@@ -54,7 +54,7 @@ sapply(results, nrow)
 ```
 
      IR  MR  DR  GQ   Z STR APR 
-     14   5   4   7   4   7   1 
+      0   0   0   0   0   0   0 
 
 ``` r
 # Or call individual finders
@@ -63,14 +63,8 @@ gq  <- find_gq(fasta)
 head(ir)
 ```
 
-|        | seq_name | start |  end | strand | length | spacer | num_repeats | remainder | subset |
-|:-------|:---------|------:|-----:|:-------|-------:|-------:|------------:|----------:|:-------|
-| Test.1 | seq1     |    16 |   29 | \+     |      6 |      2 |           1 |        29 | TRUE   |
-| Test.2 | seq1     |   108 |  121 | \+     |      6 |      2 |           1 |       121 | TRUE   |
-| Test.3 | seq1     |   542 |  555 | \+     |      6 |      2 |           1 |       555 | TRUE   |
-| Test.4 | seq1     |   813 |  826 | \+     |      6 |      2 |           1 |       826 | TRUE   |
-| Test.5 | seq1     |  2251 | 2267 | \+     |      7 |      3 |           1 |      2267 | TRUE   |
-| Test.6 | seq1     |  2370 | 2391 | \+     |     10 |      2 |           1 |      2391 | TRUE   |
+| seq_name | start | end | strand | length | spacer | num_repeats | remainder | subset |
+|:---------|------:|----:|:-------|-------:|-------:|------------:|----------:|:-------|
 
 ## Output columns
 
@@ -97,25 +91,13 @@ find_ir(fasta, format = 'GRanges') |>
     head()
 ```
 
-    GRanges object with 6 ranges and 5 metadata columns:
-          seqnames    ranges strand |    length    spacer num_repeats remainder
-             <Rle> <IRanges>  <Rle> | <integer> <integer>   <integer> <integer>
-      [1]     seq1     16-29      + |         6         2           1        29
-      [2]     seq1   108-121      + |         6         2           1       121
-      [3]     seq1   542-555      + |         6         2           1       555
-      [4]     seq1   813-826      + |         6         2           1       826
-      [5]     seq1 2251-2267      + |         7         3           1      2267
-      [6]     seq1 2370-2391      + |        10         2           1      2391
-             subset
-          <logical>
-      [1]      TRUE
-      [2]      TRUE
-      [3]      TRUE
-      [4]      TRUE
-      [5]      TRUE
-      [6]      TRUE
+    GRanges object with 0 ranges and 5 metadata columns:
+       seqnames    ranges strand |    length    spacer num_repeats remainder
+          <Rle> <IRanges>  <Rle> | <integer> <integer>   <integer> <integer>
+          subset
+       <logical>
       -------
-      seqinfo: 1 sequence from an unspecified genome; no seqlengths
+      seqinfo: no sequences
 
 ## Parameter defaults
 

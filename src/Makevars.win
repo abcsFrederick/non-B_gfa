@@ -1,0 +1,2 @@
+# -lm is implicit on Windows; -O2 is safe for both MSVC and MinGW/GCC toolchains
+PKG_CFLAGS = -O2

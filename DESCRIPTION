@@ -1,0 +1,32 @@
+Package: nonbgfa
+Type: Package
+Title: Find Non-B DNA Forming Motifs in Genomic Sequences
+Version: 0.1.0
+Authors@R: c(
+    person("Duncan E.", "Donohue", role = "aut",
+           comment = "Original GFA C implementation"),
+    person("Jack R.", "Collins", role = "aut",
+           comment = "Original GFA C implementation"),
+    person("Randy", "Johnson", email = "johnson@hood.edu",
+           role = c("aut", "cre")))
+Description: Identifies sequences associated with non-B DNA-forming motifs in
+    FASTA-format genomic sequences. Detects seven motif classes: inverted
+    repeats (cruciform DNA), mirror repeats (triplex DNA), direct repeats
+    (slipped DNA), G-quadruplexes, Z-DNA, short tandem repeats (STR), and
+    A-phased repeats (bent DNA). Based on the GFA suite developed at
+    NCI-Frederick / Frederick National Laboratory for Cancer Research.
+    See <https://nonb-abcc.ncifcrf.gov/apps/site/default>.
+License: MIT + file LICENSE
+Encoding: UTF-8
+NeedsCompilation: yes
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports:
+    rlang
+Suggests:
+    GenomicRanges,
+    IRanges,
+    BiocGenerics,
+    testthat (>= 3.0.0),
+URL: https://github.com/abcsFrederick/non-b-gfa
+BugReports: https://github.com/abcsFrederick/non-b-gfa/issues
